@@ -2,226 +2,228 @@ package gameObjects.locationData;
 
 import java.util.*;
 
-//import gameObjects.locationData.*;
-import gameObjects.locationData.Path.PathType;
+import gameObjects.Expansion;
+import gameObjects.GamePiece;
 
-public enum Location {
-		
-	SPACE1(			"Space 1",				LocationType.CITY			),
-	SPACE2(			"Space 2",				LocationType.SEA			),
-	SPACE3(			"Space 3",				LocationType.SEA			),
-	SPACE4(			"Space 4",				LocationType.WILDERNESS		),
-	SPACE5(			"Space 5",				LocationType.CITY			),
-	SPACE6(			"Space 6",				LocationType.CITY			),
-	SPACE7(			"Space 7",				LocationType.CITY			),
-	SPACE8(			"Space 8",				LocationType.SEA			),
-	SPACE9(			"Space 9",				LocationType.WILDERNESS		),
-	SPACE10(		"Space 10",				LocationType.WILDERNESS		),
-	SPACE11(		"Space 11",				LocationType.SEA			),
-	SPACE12(		"Space 12",				LocationType.SEA			),
-	SPACE13(		"Space 13",				LocationType.SEA			),
-	SPACE14(		"Space 14",				LocationType.CITY			),
-	SPACE15(		"Space 15",				LocationType.CITY			),
-	SPACE16(		"Space 16",				LocationType.CITY			),
-	SPACE17(		"Space 17",				LocationType.CITY			),
-	SPACE18(		"Space 18",				LocationType.SEA			),
-	SPACE19(		"Space 19",				LocationType.WILDERNESS		),
-	SPACE20(		"Space 20",				LocationType.CITY			),
-	SPACE21(		"Space 21",				LocationType.WILDERNESS		),
-	SAN_FRAN(		"San Francisco",		LocationType.CITY			),
-	ARKHAM(			"Arkham",				LocationType.CITY			),
-	BUENOS_AIRES(	"Buenos Aires",			LocationType.CITY			),
-	LONDON(			"London",				LocationType.CITY			),
-	ROME(			"Rome",					LocationType.CITY			),
-	ISTANBUL(		"Istanbul",				LocationType.CITY			),
-	SHANGHAI(		"Shanghai",				LocationType.CITY			),
-	TOKYO(			"Tokyo",				LocationType.CITY			),
-	SYDNEY(			"Sydney",				LocationType.CITY			),
-	AMAZON(			"The Amazon",			LocationType.WILDERNESS		),
-	PYRAMIDS(		"The Pyramids",			LocationType.WILDERNESS		),
-	AFRICA(			"The Heart of Africa",	LocationType.WILDERNESS		),
-	ANTARCTICA(		"Antarctica",			LocationType.SEA			),
-	TUNGUSKA(		"Tunguska",				LocationType.WILDERNESS		),
-	HIMILAYAS(		"The Himalayas",		LocationType.WILDERNESS		);
+public final class Location extends GamePiece {
+
+	static final Location Space1 = new Location(		"Space 1",				LocationType.CITY			);
+	static final Location Space2 = new Location(		"Space 2",				LocationType.SEA			);
+	static final Location Space3 = new Location(		"Space 3",				LocationType.SEA			);	
+	static final Location Space4 = new Location(		"Space 4",				LocationType.WILDERNESS		);
+	static final Location Space5 = new Location(		"Space 5",				LocationType.CITY			);
+	static final Location Space6 = new Location(		"Space 6",				LocationType.CITY			);
+	static final Location Space7 = new Location(		"Space 7",				LocationType.CITY			);
+	static final Location Space8 = new Location(		"Space 8",				LocationType.SEA			);
+	static final Location Space9 = new Location(		"Space 9",				LocationType.WILDERNESS		);
+	static final Location Space10 = new Location(		"Space 10",				LocationType.WILDERNESS		);
+	static final Location Space11 = new Location(		"Space 11",				LocationType.SEA			);
+	static final Location Space12 = new Location(		"Space 12",				LocationType.SEA			);
+	static final Location Space13 = new Location(		"Space 13",				LocationType.SEA			);
+	static final Location Space14 = new Location(		"Space 14",				LocationType.CITY			);
+	static final Location Space15 = new Location(		"Space 15",				LocationType.CITY			);
+	static final Location Space16 = new Location(		"Space 16",				LocationType.CITY			);
+	static final Location Space17 = new Location(		"Space 17",				LocationType.CITY			);
+	static final Location Space18 = new Location(		"Space 18",				LocationType.SEA			);
+	static final Location Space19 = new Location(		"Space 19",				LocationType.WILDERNESS		);
+	static final Location Space20 = new Location(		"Space 20",				LocationType.CITY			);
+	static final Location Space21 = new Location(		"Space 21",				LocationType.WILDERNESS		);
+	static final Location San_Fran = new Location(		"San Francisco",		LocationType.CITY			);
+	static final Location Arkham = new Location(		"Arkham",				LocationType.CITY			);
+	static final Location Buenos_Aires = new Location(	"Buenos Aires",			LocationType.CITY			);
+	static final Location London = new Location(		"London",				LocationType.CITY			);
+	static final Location Rome = new Location(			"Rome",					LocationType.CITY			);
+	static final Location Istanbul = new Location(		"Istanbul",				LocationType.CITY			);
+	static final Location Shanghai = new Location(		"Shanghai",				LocationType.CITY			);
+	static final Location Tokyo = new Location(			"Tokyo",				LocationType.CITY			);
+	static final Location Sydney = new Location(		"Sydney",				LocationType.CITY			);
+	static final Location Amazon = new Location(		"The Amazon",			LocationType.WILDERNESS		);
+	static final Location Pyramids = new Location(		"The Pyramids",			LocationType.WILDERNESS		);
+	static final Location Africa = new Location(		"The Heart of Africa",	LocationType.WILDERNESS		);
+	static final Location Antarctica = new Location(	"Antarctica",			LocationType.SEA			);
+	static final Location Tunguska = new Location(		"Tunguska",				LocationType.WILDERNESS		);
+	static final Location Himilayas = new Location(		"The Himalayas",		LocationType.WILDERNESS		);
+
 	
-	private final String name_;
 	private final LocationType locType_;
 	private final List<Path> paths_;
 	
 	private Location(String name, LocationType locType) {
-		name_ = name;
+		super(name, Expansion.VANILLA);
 		locType_ = locType;
 		paths_ = new ArrayList<Path>();
 	}
-	
-	public final String getName_() {
-		return name_;
-	}
-	
-	public final LocationType getSpaceType_() {
+
+	/**
+	 * @return the locType_
+	 */
+	public final LocationType getLocType_() {
 		return locType_;
 	}
-	
+		
+	/**
+	 * @return the paths_
+	 */
 	public final List<Path> getPaths_() {
 		return paths_;
 	}
-	
+
 	/**
 	 * The following static initialization block sets up all paths_ from any location to all other possible locations
 	 * */
 	static {
 
-		SPACE1.paths_.add(new Path(SPACE4, PathType.UNCHARTED));
-		SPACE1.paths_.add(new Path(SPACE19, PathType.SHIP));
-		SPACE1.paths_.add(new Path(SAN_FRAN, PathType.SHIP));
+		Space1.paths_.add(new Path(LocationID.SPACE4, PathType.UNCHARTED));
+		Space1.paths_.add(new Path(LocationID.SPACE19, PathType.SHIP));
+		Space1.paths_.add(new Path(LocationID.SAN_FRAN, PathType.SHIP));
 		
-		SPACE2.paths_.add(new Path(SAN_FRAN, PathType.SHIP));
-		SPACE2.paths_.add(new Path(TOKYO, PathType.SHIP));
+		Space2.paths_.add(new Path(LocationID.SAN_FRAN, PathType.SHIP));
+		Space2.paths_.add(new Path(LocationID.TOKYO, PathType.SHIP));
 		
-		SPACE3.paths_.add(new Path(BUENOS_AIRES, PathType.SHIP));
-		SPACE3.paths_.add(new Path(SYDNEY, PathType.SHIP));
+		Space3.paths_.add(new Path(LocationID.BUENOS_AIRES, PathType.SHIP));
+		Space3.paths_.add(new Path(LocationID.SYDNEY, PathType.SHIP));
 
-		SPACE4.paths_.add(new Path(SPACE1, PathType.UNCHARTED));
-		SPACE4.paths_.add(new Path(SPACE5, PathType.UNCHARTED));
+		Space4.paths_.add(new Path(LocationID.SPACE1, PathType.UNCHARTED));
+		Space4.paths_.add(new Path(LocationID.SPACE5, PathType.UNCHARTED));
 
-		SPACE5.paths_.add(new Path(SPACE4, PathType.UNCHARTED));
-		SPACE5.paths_.add(new Path(SAN_FRAN, PathType.TRAIN));
-		SPACE5.paths_.add(new Path(ARKHAM, PathType.TRAIN));
+		Space5.paths_.add(new Path(LocationID.SPACE4, PathType.UNCHARTED));
+		Space5.paths_.add(new Path(LocationID.SAN_FRAN, PathType.TRAIN));
+		Space5.paths_.add(new Path(LocationID.ARKHAM, PathType.TRAIN));
 
-		SPACE6.paths_.add(new Path(SPACE7, PathType.TRAIN));
-		SPACE6.paths_.add(new Path(SAN_FRAN, PathType.TRAIN));
-		SPACE6.paths_.add(new Path(ARKHAM, PathType.TRAIN));
+		Space6.paths_.add(new Path(LocationID.SPACE7, PathType.TRAIN));
+		Space6.paths_.add(new Path(LocationID.SAN_FRAN, PathType.TRAIN));
+		Space6.paths_.add(new Path(LocationID.ARKHAM, PathType.TRAIN));
 
-		SPACE7.paths_.add(new Path(SPACE6, PathType.TRAIN));
-		SPACE7.paths_.add(new Path(SPACE8, PathType.SHIP));
-		SPACE7.paths_.add(new Path(SAN_FRAN, PathType.SHIP));
-		SPACE7.paths_.add(new Path(BUENOS_AIRES, PathType.SHIP));
-		SPACE7.paths_.add(new Path(AMAZON, PathType.UNCHARTED));
+		Space7.paths_.add(new Path(LocationID.SPACE6, PathType.TRAIN));
+		Space7.paths_.add(new Path(LocationID.SPACE8, PathType.SHIP));
+		Space7.paths_.add(new Path(LocationID.SAN_FRAN, PathType.SHIP));
+		Space7.paths_.add(new Path(LocationID.BUENOS_AIRES, PathType.SHIP));
+		Space7.paths_.add(new Path(LocationID.AMAZON, PathType.UNCHARTED));
 
-		SPACE8.paths_.add(new Path(SPACE7, PathType.SHIP));
-		SPACE8.paths_.add(new Path(SPACE10, PathType.SHIP));
-		SPACE8.paths_.add(new Path(ARKHAM, PathType.SHIP));
-		SPACE8.paths_.add(new Path(BUENOS_AIRES, PathType.SHIP));
+		Space8.paths_.add(new Path(LocationID.SPACE7, PathType.SHIP));
+		Space8.paths_.add(new Path(LocationID.SPACE10, PathType.SHIP));
+		Space8.paths_.add(new Path(LocationID.ARKHAM, PathType.SHIP));
+		Space8.paths_.add(new Path(LocationID.BUENOS_AIRES, PathType.SHIP));
 
-		SPACE9.paths_.add(new Path(ARKHAM, PathType.SHIP));
+		Space9.paths_.add(new Path(LocationID.ARKHAM, PathType.SHIP));
 
-		SPACE10.paths_.add(new Path(SPACE8, PathType.SHIP));
-		SPACE10.paths_.add(new Path(SPACE15, PathType.SHIP));
-		SPACE10.paths_.add(new Path(ROME, PathType.SHIP));
-		SPACE10.paths_.add(new Path(PYRAMIDS, PathType.UNCHARTED));
+		Space10.paths_.add(new Path(LocationID.SPACE8, PathType.SHIP));
+		Space10.paths_.add(new Path(LocationID.SPACE15, PathType.SHIP));
+		Space10.paths_.add(new Path(LocationID.ROME, PathType.SHIP));
+		Space10.paths_.add(new Path(LocationID.PYRAMIDS, PathType.UNCHARTED));
 
-		SPACE11.paths_.add(new Path(SPACE15, PathType.SHIP));
-		SPACE11.paths_.add(new Path(BUENOS_AIRES, PathType.SHIP));
+		Space11.paths_.add(new Path(LocationID.SPACE15, PathType.SHIP));
+		Space11.paths_.add(new Path(LocationID.BUENOS_AIRES, PathType.SHIP));
 
-		SPACE12.paths_.add(new Path(BUENOS_AIRES, PathType.SHIP));
-		SPACE12.paths_.add(new Path(ANTARCTICA, PathType.SHIP));
+		Space12.paths_.add(new Path(LocationID.BUENOS_AIRES, PathType.SHIP));
+		Space12.paths_.add(new Path(LocationID.ANTARCTICA, PathType.SHIP));
 
-		SPACE13.paths_.add(new Path(LONDON, PathType.SHIP));
+		Space13.paths_.add(new Path(LocationID.LONDON, PathType.SHIP));
 
-		SPACE14.paths_.add(new Path(SPACE16, PathType.TRAIN));
-		SPACE14.paths_.add(new Path(ROME, PathType.TRAIN));
+		Space14.paths_.add(new Path(LocationID.SPACE16, PathType.TRAIN));
+		Space14.paths_.add(new Path(LocationID.ROME, PathType.TRAIN));
 		
-		SPACE15.paths_.add(new Path(SPACE10, PathType.SHIP));
-		SPACE15.paths_.add(new Path(SPACE11, PathType.SHIP));
-		SPACE15.paths_.add(new Path(SPACE17, PathType.SHIP));
-		SPACE15.paths_.add(new Path(SPACE18, PathType.SHIP));
-		SPACE15.paths_.add(new Path(AFRICA, PathType.UNCHARTED));
+		Space15.paths_.add(new Path(LocationID.SPACE10, PathType.SHIP));
+		Space15.paths_.add(new Path(LocationID.SPACE11, PathType.SHIP));
+		Space15.paths_.add(new Path(LocationID.SPACE17, PathType.SHIP));
+		Space15.paths_.add(new Path(LocationID.SPACE18, PathType.SHIP));
+		Space15.paths_.add(new Path(LocationID.AFRICA, PathType.UNCHARTED));
 
-		SPACE16.paths_.add(new Path(SPACE14, PathType.TRAIN));
-		SPACE16.paths_.add(new Path(ISTANBUL, PathType.TRAIN));
-		SPACE16.paths_.add(new Path(TUNGUSKA, PathType.TRAIN));
+		Space16.paths_.add(new Path(LocationID.SPACE14, PathType.TRAIN));
+		Space16.paths_.add(new Path(LocationID.ISTANBUL, PathType.TRAIN));
+		Space16.paths_.add(new Path(LocationID.TUNGUSKA, PathType.TRAIN));
 
-		SPACE17.paths_.add(new Path(SPACE15, PathType.SHIP));
-		SPACE17.paths_.add(new Path(SPACE20, PathType.SHIP));
-		SPACE17.paths_.add(new Path(ISTANBUL, PathType.TRAIN));
-		SPACE17.paths_.add(new Path(SHANGHAI, PathType.TRAIN));
-		SPACE17.paths_.add(new Path(HIMILAYAS, PathType.UNCHARTED));
+		Space17.paths_.add(new Path(LocationID.SPACE15, PathType.SHIP));
+		Space17.paths_.add(new Path(LocationID.SPACE20, PathType.SHIP));
+		Space17.paths_.add(new Path(LocationID.ISTANBUL, PathType.TRAIN));
+		Space17.paths_.add(new Path(LocationID.SHANGHAI, PathType.TRAIN));
+		Space17.paths_.add(new Path(LocationID.HIMILAYAS, PathType.UNCHARTED));
 
-		SPACE18.paths_.add(new Path(SPACE15, PathType.SHIP));
-		SPACE18.paths_.add(new Path(SYDNEY, PathType.SHIP));
+		Space18.paths_.add(new Path(LocationID.SPACE15, PathType.SHIP));
+		Space18.paths_.add(new Path(LocationID.SYDNEY, PathType.SHIP));
 
-		SPACE19.paths_.add(new Path(SPACE1, PathType.SHIP));
-		SPACE19.paths_.add(new Path(SHANGHAI, PathType.TRAIN));
-		SPACE19.paths_.add(new Path(TOKYO, PathType.SHIP));
-		SPACE19.paths_.add(new Path(TUNGUSKA, PathType.TRAIN));
+		Space19.paths_.add(new Path(LocationID.SPACE1, PathType.SHIP));
+		Space19.paths_.add(new Path(LocationID.SHANGHAI, PathType.TRAIN));
+		Space19.paths_.add(new Path(LocationID.TOKYO, PathType.SHIP));
+		Space19.paths_.add(new Path(LocationID.TUNGUSKA, PathType.TRAIN));
 
-		SPACE20.paths_.add(new Path(SPACE17, PathType.SHIP));
-		SPACE20.paths_.add(new Path(SHANGHAI, PathType.SHIP));
-		SPACE20.paths_.add(new Path(TOKYO, PathType.SHIP));
-		SPACE20.paths_.add(new Path(SYDNEY, PathType.SHIP));
+		Space20.paths_.add(new Path(LocationID.SPACE17, PathType.SHIP));
+		Space20.paths_.add(new Path(LocationID.SHANGHAI, PathType.SHIP));
+		Space20.paths_.add(new Path(LocationID.TOKYO, PathType.SHIP));
+		Space20.paths_.add(new Path(LocationID.SYDNEY, PathType.SHIP));
 
-		SPACE21.paths_.add(new Path(SYDNEY, PathType.UNCHARTED));
+		Space21.paths_.add(new Path(LocationID.SYDNEY, PathType.UNCHARTED));
 		
-		SAN_FRAN.paths_.add(new Path(SPACE1, PathType.SHIP));
-		SAN_FRAN.paths_.add(new Path(SPACE2, PathType.SHIP));
-		SAN_FRAN.paths_.add(new Path(SPACE5, PathType.TRAIN));
-		SAN_FRAN.paths_.add(new Path(SPACE6, PathType.TRAIN));
-		SAN_FRAN.paths_.add(new Path(SPACE7, PathType.SHIP));
+		San_Fran.paths_.add(new Path(LocationID.SPACE1, PathType.SHIP));
+		San_Fran.paths_.add(new Path(LocationID.SPACE2, PathType.SHIP));
+		San_Fran.paths_.add(new Path(LocationID.SPACE5, PathType.TRAIN));
+		San_Fran.paths_.add(new Path(LocationID.SPACE6, PathType.TRAIN));
+		San_Fran.paths_.add(new Path(LocationID.SPACE7, PathType.SHIP));
 
-		ARKHAM.paths_.add(new Path(SPACE5, PathType.TRAIN));
-		ARKHAM.paths_.add(new Path(SPACE6, PathType.TRAIN));
-		ARKHAM.paths_.add(new Path(SPACE8, PathType.SHIP));
-		ARKHAM.paths_.add(new Path(SPACE9, PathType.SHIP));
-		ARKHAM.paths_.add(new Path(LONDON, PathType.SHIP));
+		Arkham.paths_.add(new Path(LocationID.SPACE5, PathType.TRAIN));
+		Arkham.paths_.add(new Path(LocationID.SPACE6, PathType.TRAIN));
+		Arkham.paths_.add(new Path(LocationID.SPACE8, PathType.SHIP));
+		Arkham.paths_.add(new Path(LocationID.SPACE9, PathType.SHIP));
+		Arkham.paths_.add(new Path(LocationID.LONDON, PathType.SHIP));
 
-		BUENOS_AIRES.paths_.add(new Path(SPACE3, PathType.SHIP));
-		BUENOS_AIRES.paths_.add(new Path(SPACE7, PathType.SHIP));
-		BUENOS_AIRES.paths_.add(new Path(SPACE8, PathType.SHIP));
-		BUENOS_AIRES.paths_.add(new Path(SPACE11, PathType.SHIP));
-		BUENOS_AIRES.paths_.add(new Path(SPACE12, PathType.SHIP));
-		BUENOS_AIRES.paths_.add(new Path(AMAZON, PathType.UNCHARTED));
+		Buenos_Aires.paths_.add(new Path(LocationID.SPACE3, PathType.SHIP));
+		Buenos_Aires.paths_.add(new Path(LocationID.SPACE7, PathType.SHIP));
+		Buenos_Aires.paths_.add(new Path(LocationID.SPACE8, PathType.SHIP));
+		Buenos_Aires.paths_.add(new Path(LocationID.SPACE11, PathType.SHIP));
+		Buenos_Aires.paths_.add(new Path(LocationID.SPACE12, PathType.SHIP));
+		Buenos_Aires.paths_.add(new Path(LocationID.AMAZON, PathType.UNCHARTED));
 
-		LONDON.paths_.add(new Path(SPACE13, PathType.SHIP));
-		LONDON.paths_.add(new Path(ROME, PathType.SHIP));
-		LONDON.paths_.add(new Path(ARKHAM, PathType.SHIP));
+		London.paths_.add(new Path(LocationID.SPACE13, PathType.SHIP));
+		London.paths_.add(new Path(LocationID.ROME, PathType.SHIP));
+		London.paths_.add(new Path(LocationID.ARKHAM, PathType.SHIP));
 
-		ROME.paths_.add(new Path(SPACE10, PathType.SHIP));
-		ROME.paths_.add(new Path(SPACE14, PathType.TRAIN));
-		ROME.paths_.add(new Path(LONDON, PathType.SHIP));
-		ROME.paths_.add(new Path(ISTANBUL, PathType.TRAIN));
-		ROME.paths_.add(new Path(PYRAMIDS, PathType.SHIP));
+		Rome.paths_.add(new Path(LocationID.SPACE10, PathType.SHIP));
+		Rome.paths_.add(new Path(LocationID.SPACE14, PathType.TRAIN));
+		Rome.paths_.add(new Path(LocationID.LONDON, PathType.SHIP));
+		Rome.paths_.add(new Path(LocationID.ISTANBUL, PathType.TRAIN));
+		Rome.paths_.add(new Path(LocationID.PYRAMIDS, PathType.SHIP));
 
-		ISTANBUL.paths_.add(new Path(SPACE16, PathType.TRAIN));
-		ISTANBUL.paths_.add(new Path(SPACE17, PathType.TRAIN));
-		ISTANBUL.paths_.add(new Path(ROME, PathType.TRAIN));
-		ISTANBUL.paths_.add(new Path(PYRAMIDS, PathType.TRAIN));
+		Istanbul.paths_.add(new Path(LocationID.SPACE16, PathType.TRAIN));
+		Istanbul.paths_.add(new Path(LocationID.SPACE17, PathType.TRAIN));
+		Istanbul.paths_.add(new Path(LocationID.ROME, PathType.TRAIN));
+		Istanbul.paths_.add(new Path(LocationID.PYRAMIDS, PathType.TRAIN));
 
-		SHANGHAI.paths_.add(new Path(SPACE17, PathType.TRAIN));
-		SHANGHAI.paths_.add(new Path(SPACE19, PathType.TRAIN));
-		SHANGHAI.paths_.add(new Path(SPACE20, PathType.SHIP));
-		SHANGHAI.paths_.add(new Path(TOKYO, PathType.SHIP));
-		SHANGHAI.paths_.add(new Path(HIMILAYAS, PathType.UNCHARTED));
+		Shanghai.paths_.add(new Path(LocationID.SPACE17, PathType.TRAIN));
+		Shanghai.paths_.add(new Path(LocationID.SPACE19, PathType.TRAIN));
+		Shanghai.paths_.add(new Path(LocationID.SPACE20, PathType.SHIP));
+		Shanghai.paths_.add(new Path(LocationID.TOKYO, PathType.SHIP));
+		Shanghai.paths_.add(new Path(LocationID.HIMILAYAS, PathType.UNCHARTED));
 
-		TOKYO.paths_.add(new Path(SPACE2, PathType.SHIP));
-		TOKYO.paths_.add(new Path(SPACE19, PathType.SHIP));
-		TOKYO.paths_.add(new Path(SPACE20, PathType.SHIP));
-		TOKYO.paths_.add(new Path(SHANGHAI, PathType.SHIP));
+		Tokyo.paths_.add(new Path(LocationID.SPACE2, PathType.SHIP));
+		Tokyo.paths_.add(new Path(LocationID.SPACE19, PathType.SHIP));
+		Tokyo.paths_.add(new Path(LocationID.SPACE20, PathType.SHIP));
+		Tokyo.paths_.add(new Path(LocationID.SHANGHAI, PathType.SHIP));
 
-		SYDNEY.paths_.add(new Path(SPACE3, PathType.SHIP));
-		SYDNEY.paths_.add(new Path(SPACE18, PathType.SHIP));
-		SYDNEY.paths_.add(new Path(SPACE20, PathType.SHIP));
-		SYDNEY.paths_.add(new Path(SPACE21, PathType.UNCHARTED));
-		SYDNEY.paths_.add(new Path(ANTARCTICA, PathType.SHIP));
+		Sydney.paths_.add(new Path(LocationID.SPACE3, PathType.SHIP));
+		Sydney.paths_.add(new Path(LocationID.SPACE18, PathType.SHIP));
+		Sydney.paths_.add(new Path(LocationID.SPACE20, PathType.SHIP));
+		Sydney.paths_.add(new Path(LocationID.SPACE21, PathType.UNCHARTED));
+		Sydney.paths_.add(new Path(LocationID.ANTARCTICA, PathType.SHIP));
 
-		AMAZON.paths_.add(new Path(SPACE7, PathType.UNCHARTED));
-		AMAZON.paths_.add(new Path(BUENOS_AIRES, PathType.UNCHARTED));
+		Amazon.paths_.add(new Path(LocationID.SPACE7, PathType.UNCHARTED));
+		Amazon.paths_.add(new Path(LocationID.BUENOS_AIRES, PathType.UNCHARTED));
 
-		PYRAMIDS.paths_.add(new Path(SPACE10, PathType.UNCHARTED));
-		PYRAMIDS.paths_.add(new Path(ROME, PathType.SHIP));
-		PYRAMIDS.paths_.add(new Path(ISTANBUL, PathType.TRAIN));
-		PYRAMIDS.paths_.add(new Path(AFRICA, PathType.UNCHARTED));
+		Pyramids.paths_.add(new Path(LocationID.SPACE10, PathType.UNCHARTED));
+		Pyramids.paths_.add(new Path(LocationID.ROME, PathType.SHIP));
+		Pyramids.paths_.add(new Path(LocationID.ISTANBUL, PathType.TRAIN));
+		Pyramids.paths_.add(new Path(LocationID.AFRICA, PathType.UNCHARTED));
 
-		AFRICA.paths_.add(new Path(SPACE15, PathType.UNCHARTED));
-		AFRICA.paths_.add(new Path(PYRAMIDS, PathType.UNCHARTED));
+		Africa.paths_.add(new Path(LocationID.SPACE15, PathType.UNCHARTED));
+		Africa.paths_.add(new Path(LocationID.PYRAMIDS, PathType.UNCHARTED));
 
-		ANTARCTICA.paths_.add(new Path(SPACE12, PathType.SHIP));
-		ANTARCTICA.paths_.add(new Path(SYDNEY, PathType.SHIP));
+		Antarctica.paths_.add(new Path(LocationID.SPACE12, PathType.SHIP));
+		Antarctica.paths_.add(new Path(LocationID.SYDNEY, PathType.SHIP));
 
-		TUNGUSKA.paths_.add(new Path(SPACE16, PathType.TRAIN));
-		TUNGUSKA.paths_.add(new Path(SPACE19, PathType.TRAIN));
+		Tunguska.paths_.add(new Path(LocationID.SPACE16, PathType.TRAIN));
+		Tunguska.paths_.add(new Path(LocationID.SPACE19, PathType.TRAIN));
 
-		HIMILAYAS.paths_.add(new Path(SPACE17, PathType.UNCHARTED));
-		HIMILAYAS.paths_.add(new Path(SHANGHAI, PathType.UNCHARTED));
+		Himilayas.paths_.add(new Path(LocationID.SPACE17, PathType.UNCHARTED));
+		Himilayas.paths_.add(new Path(LocationID.SHANGHAI, PathType.UNCHARTED));
 
 	}
 	

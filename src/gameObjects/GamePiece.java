@@ -1,7 +1,9 @@
 /**
  * 
  */
-package gameObjects.gameTokens;
+package gameObjects;
+
+import gameObjects.Expansion;
 
 /**
  * @author Sam
@@ -9,13 +11,6 @@ package gameObjects.gameTokens;
  */
 	
 public class GamePiece {
-	
-	public static enum Expansion {
-	
-		VANILLA,
-		FORSAKEN_LORE;
-		
-	}
 	
 	private final String name_;
 	private final Expansion expansion_;

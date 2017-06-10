@@ -1,22 +1,19 @@
 package gameObjects.locationData;
 
-import gameObjects.locationData.Location;
+import gameObjects.locationData.LocationID;
+import gameObjects.locationData.PathType;
 
 public final class Path {
 	
-	public static enum PathType {
-		TRAIN, UNCHARTED, SHIP;
-	}
-	
-	private final Location dest_;
+	private final LocationID dest_;
 	private final PathType pathType_;
 	
-	Path(Location dest, PathType pathType) {
+	Path(LocationID dest, PathType pathType) {
 		dest_ = dest;
 		pathType_ = pathType;
 	}
 	
-	public final Location getDest_() {
+	public final LocationID getDest_() {
 		return dest_;
 	}
 	

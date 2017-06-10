@@ -14,22 +14,22 @@ public class AllPossiblePaths {
 	public void testAllPossiblePaths() {
 		
 		int totalPaths = 0;
-		for (Location src : Location.values()) {
+		for (LocationID src : LocationID.values()) {
 			
-			totalPaths += src.getPaths_().size();
+			totalPaths += src.location_.getPaths_().size();
 			
 		}
 		
 		int reversiblePaths = 0;
-		for (Location srcLoc : Location.values()) {
+		for (LocationID srcLoc : LocationID.values()) {
 			
-			List<Path> paths = srcLoc.getPaths_();			
+			List<Path> paths = srcLoc.location_.getPaths_();			
 			for (Path srcPath : paths) {
 								
-				Location destLoc = srcPath.getDest_();				
+				LocationID destLoc = srcPath.getDest_();				
 				
 				boolean condition = false;
-				for (Path destPath : destLoc.getPaths_()) {
+				for (Path destPath : destLoc.location_.getPaths_()) {
 					if (destPath.getDest_() == srcLoc) {
 						condition = true;
 						break;
