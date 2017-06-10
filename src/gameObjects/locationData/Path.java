@@ -4,7 +4,7 @@ import gameObjects.locationData.LocationID;
 import gameObjects.locationData.PathType;
 
 public final class Path {
-	
+		
 	private final LocationID dest_;
 	private final PathType pathType_;
 	
