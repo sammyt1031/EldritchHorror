@@ -1,11 +1,8 @@
 package gameObjects.locationData;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
-import gameObjects.Expansion;
-import gameObjects.GamePiece;
+import gameObjects.*;
 
 public enum LocationID {
 			
@@ -46,15 +43,15 @@ public enum LocationID {
 	TUNGUSKA( 		"Tunguska",				LocationType.WILDERNESS	),
 	HIMILAYAS( 		"The Himalayas",		LocationType.WILDERNESS	);
 	
-	public final Location getLocation_() {
-		return location_;
-	}
-	
+	private final Location location_;
+
 	private LocationID(String name, LocationType locType) {
 		location_ = new Location(name, locType);
 	}
-	
-	private final Location location_;
+		
+	public final Location getLocation_() {
+		return location_;
+	}
 	
 	public final class Location extends GamePiece {
 

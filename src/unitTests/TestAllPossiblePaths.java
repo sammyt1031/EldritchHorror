@@ -8,7 +8,7 @@ import gameObjects.locationData.*;
 
 import java.util.List;
 
-public class AllPossiblePaths {
+public class TestAllPossiblePaths {
 
 	@Test
 	public void testAllPossiblePaths() {
