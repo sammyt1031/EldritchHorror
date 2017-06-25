@@ -33,6 +33,7 @@ public final class GameBoard {
 	
 	private int currDoom;
 	private OmenTrack.Omen currOmen;
+	private LocationID activeExpedition;
 	private Player leadInv;
 	
 	

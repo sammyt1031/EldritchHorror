@@ -16,20 +16,20 @@ public class TestAllPossiblePaths {
 		int totalPaths = 0;
 		for (LocationID src : LocationID.values()) {
 			
-			totalPaths += src.getLocation_().getPaths_().size();
+			totalPaths += src.getPaths().size();
 			
 		}
 		
 		int reversiblePaths = 0;
 		for (LocationID srcLoc : LocationID.values()) {
 			
-			List<Path> paths = srcLoc.getLocation_().getPaths_();			
+			List<Path> paths = srcLoc.getPaths();			
 			for (Path srcPath : paths) {
 								
 				LocationID destLoc = srcPath.getDest_();				
 				
 				boolean condition = false;
-				for (Path destPath : destLoc.getLocation_().getPaths_()) {
+				for (Path destPath : destLoc.getPaths()) {
 					if (destPath.getDest_() == srcLoc) {
 						condition = true;
 						break;

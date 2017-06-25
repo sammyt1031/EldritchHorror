@@ -19,8 +19,7 @@ public enum HeroID {
 	
 	private final Hero hero_;
 	
-	private HeroID(	String name, int maxHlth, int maxSan, int baseLore, int baseInf, int baseObs, int baseStr, int baseWill, LocationID startLoc) {
-		
+	private HeroID(	String name, int maxHlth, int maxSan, int baseLore, int baseInf, int baseObs, int baseStr, int baseWill, LocationID startLoc) {		
 		hero_ = new Hero(name, maxHlth, maxSan, baseLore, baseInf, baseObs, baseStr, baseWill, startLoc);		
 	}
 

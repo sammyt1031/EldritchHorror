@@ -8,7 +8,7 @@ public final class Asset extends Item {
 
 	private final int cost;
 	
-	public Asset(String name, Expansion expansion, EnumSet<ItemFlags> flags, int cost) {
+	Asset(String name, Expansion expansion, int cost, EnumSet<ItemFlags> flags) {
 		super(name, expansion, flags);
 		
 		this.cost = cost;
