@@ -3,42 +3,54 @@ package gameObjects;
 public class OmenTrack {
 	
 	public enum Omen {
-		GREEN, BLUE1, RED, BLUE2;
+		GREEN, BLUE, RED;
 	}
 	
-	public static final Omen rotateClockwise(Omen currOmen) {
-		
-		switch(currOmen) {
+	private static Omen prevOmen = null;
 	
-		case GREEN:
-			return Omen.BLUE1;
-		case BLUE1:
+	public static final Omen rotateClockwise(Omen currOmen) {
+				
+		if (currOmen == Omen.GREEN) {
+			prevOmen = Omen.GREEN;
+			return Omen.BLUE;
+		}
+		else if (currOmen == Omen.BLUE && prevOmen == Omen.GREEN) {
 			return Omen.RED;
-		case RED:
-			return Omen.BLUE2;
-		case BLUE2:
+		}
+		else if (currOmen == Omen.RED) {
+			prevOmen = Omen.RED;
+			return Omen.BLUE;
+		}
+		else if (currOmen == Omen.BLUE && prevOmen == Omen.RED) {
 			return Omen.GREEN;
-		default:
-			System.err.printf("ERROR: Received invalid Omen: %s! Defaulting to GREEN", currOmen.toString());
-			return Omen.GREEN;			
-		}				
+		}
+		else {
+			System.err.printf("ERROR: Received invalid Omen: %s! Returning null", currOmen.toString());
+			return null;
+		}
+							
 	}
 	
 	public static final Omen rotateCounterClockwise(Omen currOmen) {
-		
-		switch(currOmen) {
-	
-		case GREEN:
-			return Omen.BLUE2;
-		case BLUE1:
-			return Omen.GREEN;
-		case RED:
-			return Omen.BLUE1;
-		case BLUE2:
+				
+		if (currOmen == Omen.GREEN) {
+			prevOmen = Omen.RED;
+			return Omen.BLUE;
+		}
+		else if (currOmen == Omen.BLUE && prevOmen == Omen.RED) {
 			return Omen.RED;
-		default:
-			System.err.printf("ERROR: Received invalid Omen: %s! Defaulting to GREEN", currOmen.toString());
-			return Omen.GREEN;			
-		}			
+		}
+		else if (currOmen == Omen.RED) {
+			prevOmen = Omen.GREEN;
+			return Omen.BLUE;
+		}
+		else if (currOmen == Omen.BLUE && prevOmen == Omen.GREEN) {
+			return Omen.GREEN;
+		}
+		else {
+			System.err.printf("ERROR: Received invalid Omen: %s! Returning null", currOmen.toString());
+			return null;
+		}
+				
 	}
 }

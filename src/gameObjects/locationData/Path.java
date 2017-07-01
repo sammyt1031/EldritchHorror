@@ -1,24 +1,23 @@
 package gameObjects.locationData;
 
-import gameObjects.locationData.LocationID;
 import gameObjects.locationData.PathType;
 
 public final class Path {
 		
-	private final LocationID dest_;
-	private final PathType pathType_;
+	private final int destID;
+	private final PathType pathType;
 	
-	Path(LocationID dest, PathType pathType) {
-		dest_ = dest;
-		pathType_ = pathType;
+	Path(int destID, PathType pathType) {
+		this.destID = destID;
+		this.pathType = pathType;
 	}
 	
-	public final LocationID getDest_() {
-		return dest_;
+	public final int getDestID() {
+		return this.destID;
 	}
 	
-	public final PathType getPathType_() {
-		return pathType_;
+	public final PathType getPathType() {
+		return this.pathType;
 	}
 	
 }

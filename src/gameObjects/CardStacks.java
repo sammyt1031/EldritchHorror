@@ -9,7 +9,7 @@ public final class CardStacks {
 
 	private static final List<Asset> assetDeck;
 	private static final List<Artifact> artifactDeck;
-	private static final List<LocationID> cluePile;
+	private static final List<Location> cluePile;
 	private static final List<Monster> monsterPile;
 	
 	public static final void initStacks() {
@@ -21,7 +21,7 @@ public final class CardStacks {
 	static {
 		assetDeck = new ArrayList<Asset>();
 		artifactDeck = new ArrayList<Artifact>();
-		cluePile = Arrays.asList(LocationID.values());
+		cluePile = new ArrayList<Location>();
 		monsterPile = new ArrayList<Monster>();
 	}
 	

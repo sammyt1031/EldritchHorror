@@ -1,81 +1,119 @@
 package gameObjects.gameTokens;
 
-import gameObjects.Expansion;
-import gameObjects.GamePiece;
-import gameObjects.locationData.LocationID;
+import java.sql.*;
+import java.util.*;
+
+import database.DatabaseHandler;
+import gameObjects.*;
 
 public final class Hero extends GamePiece {
 	
-	private final int maxHlth_;
-	private final int maxSan_;
-	private final int baseLore_;
-	private final int baseInf_;
-	private final int baseObs_;
-	private final int baseStr_;
-	private final int baseWill_;
-	private final LocationID startLoc_;
+	public static final Map<Integer, Hero> HeroMap;
 	
-	Hero( String name, int maxHlth, int maxSan, int baseLore, int baseInf, int baseObs, int baseStr, int baseWill, LocationID startLoc) {
-		
+	private final int maxHlth;
+	private final int maxSan;
+	private final int baseLore;
+	private final int baseInf;
+	private final int baseObs;
+	private final int baseStr;
+	private final int baseWill;
+	
+	private Hero( String name, int maxHlth, int maxSan, int baseLore, int baseInf, int baseObs, int baseStr, int baseWill) {		
 		super(name, Expansion.VANILLA);
-		maxHlth_ = maxHlth;
-		maxSan_ = maxSan;
-		baseLore_ = baseLore;
-		baseInf_ = baseInf;
-		baseObs_ = baseObs;
-		baseStr_ = baseStr;
-		baseWill_ = baseWill;
-		startLoc_ = startLoc;
 		
+		this.maxHlth = maxHlth;
+		this.maxSan = maxSan;
+		this.baseLore = baseLore;
+		this.baseInf = baseInf;
+		this.baseObs = baseObs;
+		this.baseStr = baseStr;
+		this.baseWill = baseWill;
+				
 	}
 	
 	/**
-	 * @return the maxHlth_
+	 * @return the maxHlth
 	 */
-	public final int getMaxHlth_() {
-		return maxHlth_;
+	public final int getMaxHlth() {
+		return this.maxHlth;
 	}
 	/**
-	 * @return the maxSan_
+	 * @return the maxSan
 	 */
-	public final int getMaxSan_() {
-		return maxSan_;
+	public final int getMaxSan() {
+		return maxSan;
 	}
 	/**
-	 * @return the baseLore_
+	 * @return the baseLore
 	 */
-	public final int getBaseLore_() {
-		return baseLore_;
+	public final int getBaseLore() {
+		return baseLore;
 	}
 	/**
-	 * @return the baseInf_
+	 * @return the baseInf
 	 */
-	public final int getBaseInf_() {
-		return baseInf_;
+	public final int getBaseInf() {
+		return baseInf;
 	}
 	/**
-	 * @return the baseObs_
+	 * @return the baseObs
 	 */
-	public final int getBaseObs_() {
-		return baseObs_;
+	public final int getBaseObs() {
+		return baseObs;
 	}
 	/**
-	 * @return the baseStr_
+	 * @return the baseStr
 	 */
-	public final int getBaseStr_() {
-		return baseStr_;
+	public final int getBaseStr() {
+		return baseStr;
 	}
 	/**
-	 * @return the baseWill_
+	 * @return the baseWill
 	 */
-	public final int getBaseWill_() {
-		return baseWill_;
+	public final int getBaseWill() {
+		return baseWill;
 	}
-	/**
-	 * @return the startLoc_
-	 */
-	public final LocationID getStartLoc_() {
-		return startLoc_;
+	
+	static {
+		
+		Map<Integer, Hero> map = new HashMap<Integer, Hero>();
+		
+		Connection conn = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			
+			conn = DriverManager.getConnection(DatabaseHandler.DATABASE_URL);
+			statement = conn.prepareStatement("SELECT * FROM Heroes");
+			resultSet = statement.executeQuery();
+			
+			while (resultSet.next()) {
+				
+				int id = resultSet.getInt(1);
+				String name = resultSet.getString(2);
+				int maxHealth = resultSet.getInt(3);
+				int maxSanity = resultSet.getInt(4);
+				int baseLore = resultSet.getInt(5);
+				int baseInf = resultSet.getInt(6);
+				int baseObs = resultSet.getInt(7);
+				int baseStr = resultSet.getInt(8);
+				int baseWill = resultSet.getInt(9);
+				
+				map.put(id, new Hero(name, maxHealth, maxSanity, baseLore, baseInf, baseObs, baseStr, baseWill));
+			
+			}
+			 	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DatabaseHandler.close(resultSet);
+			DatabaseHandler.close(statement);
+			DatabaseHandler.close(conn);
+		}
+		
+		HeroMap = Collections.unmodifiableMap(map);
+		
 	}
 	
 }

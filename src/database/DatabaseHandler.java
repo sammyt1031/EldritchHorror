@@ -4,17 +4,27 @@ import java.sql.*;
 
 public final class DatabaseHandler {
 	
-	public static final Connection getConnection() {
-		Connection conn = null;
+	public static final String DATABASE_URL = "jdbc:sqlite:EldritchHorror.db";
+	
+	public static final void close(ResultSet rs) {
 		try {
-			
-			conn = DriverManager.getConnection("jdbc:sqlite:EldritchHorror");
-					
-		} catch (SQLException e) {
-			e.printStackTrace();
+			rs.close();
+		} catch (Exception e) {
 		}
-		
-		return conn;
+	}
+	
+	public static final void close(PreparedStatement ps) {
+		try {
+			ps.close();
+		} catch (Exception e) {			
+		}
+	}
+	
+	public static final void close(Connection conn) {
+		try {
+			conn.close();
+		} catch (Exception e) {
+		}
 	}
 
 }

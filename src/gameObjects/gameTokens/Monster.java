@@ -1,7 +1,7 @@
 package gameObjects.gameTokens;
 
 import gameObjects.*;
-import gameObjects.locationData.LocationID;
+import gameObjects.locationData.Location;
 
 public final class Monster extends GamePiece {
 
@@ -12,7 +12,7 @@ public final class Monster extends GamePiece {
 	private final int maxHlth_;
 	
 	private int currHlth_;
-	private LocationID currLoc_;
+	private Location currLoc_;
 	
 	Monster(String name, Expansion expansion, int horror, int willMod, int damage, int strMod, int maxHlth) {
 		super(name, expansion);
@@ -42,14 +42,14 @@ public final class Monster extends GamePiece {
 	/**
 	 * @return the currLoc_
 	 */
-	public final LocationID getCurrLoc_() {
+	public final Location getCurrLoc_() {
 		return currLoc_;
 	}
 
 	/**
 	 * @param currLoc_ the currLoc_ to set
 	 */
-	public final void setCurrLoc_(LocationID currLoc_) {
+	public final void setCurrLoc_(Location currLoc_) {
 		this.currLoc_ = currLoc_;
 	}
 

@@ -6,16 +6,14 @@ import java.sql.*;
 
 import org.junit.Test;
 
-import database.DatabaseHandler;
-
 public class TestDatabaseConnection {
 
 	@Test
 	public void testDatabaseConnection() {
 		
-		Connection conn = DatabaseHandler.getConnection();
 		
 		try {
+			Connection conn = DriverManager.getConnection("jdbc:sqlite:EldritchHorror.db");
 			PreparedStatement statement = conn.prepareStatement("SELECT * FROM AncientOnes WHERE Name = 'Azathoth'");
 			ResultSet resultSet = statement.executeQuery();
 			

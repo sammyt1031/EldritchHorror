@@ -15,7 +15,7 @@ public abstract class Item extends Card {
 	protected Item(String name, Expansion expansion, EnumSet<ItemFlags> flags) {
 		super(name, expansion);
 		
-		this.flags = flags;
+		this.flags = EnumSet.copyOf(flags);
 	}
 
 	public final boolean isItemType(ItemFlags flag) {

@@ -1,37 +1,29 @@
-/**
- * 
- */
 package gameObjects;
 
 import gameObjects.Expansion;
 
-/**
- * @author Sam
- *
- */
+public abstract class GamePiece {
 	
-public class GamePiece {
-	
-	private final String name_;
-	private final Expansion expansion_;
+	private final String name;
+	private final Expansion expansion;
 	
 	protected GamePiece(String name, Expansion expansion) {
-		name_ = name;
-		expansion_ = expansion;
+		this.name = name;
+		this.expansion = expansion;
 	}
 
 	/**
 	 * @return the expansion this game piece corresponds to
 	 */
-	public final String getName_() {
-		return name_;
+	public final String getName() {
+		return this.name;
 	}
 	
 	/**
 	 * @return the expansion this game piece corresponds to
 	 */
-	public final Expansion getExpansion_() {
-		return expansion_;
+	public final Expansion getExpansion() {
+		return this.expansion;
 	}
 	
 }
