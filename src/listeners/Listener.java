@@ -1,17 +1,9 @@
 package listeners;
 
-public abstract class Listener {
+import java.util.concurrent.Callable;
+
+public abstract class Listener<T> implements Callable<T> {
 	
-	private final Enum e;
 	
-	protected Listener(Enum e) {
-		this.e = e;
-	}
-	
-	public abstract void update();
-	
-	public Enum getEnum() {
-		return this.e;
-	}
 	
 }

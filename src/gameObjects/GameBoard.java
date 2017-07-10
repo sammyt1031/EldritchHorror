@@ -12,7 +12,7 @@ public final class GameBoard {
 	
 	private static GameBoard Game = null;
 	
-	public static void initGame(Expansion expansion, AncientOneID ancientOne, int numPlayers) {
+	public static void initGame(Expansion expansion, AncientOne ancientOne, int numPlayers) {
 		if (Game == null) {
 			Game = new GameBoard(expansion, ancientOne, numPlayers);
 		}
@@ -23,7 +23,7 @@ public final class GameBoard {
 	
 	private final Expansion expansion;
 	private final IconReference iconRef;
-	private final AncientOneID ancientOne;
+	private final AncientOne ancientOne;
 	private final List<Player> players;
 	
 	private final List<Monster> monstersInPlay;
@@ -39,14 +39,14 @@ public final class GameBoard {
 	private Player leadInv;
 		
 //	New game initialization
-	private GameBoard(Expansion expansion, AncientOneID ancientOne, int numPlayers) {
+	private GameBoard(Expansion expansion, AncientOne ancientOne, int numPlayers) {
 		this.expansion = expansion;
 		this.ancientOne = ancientOne;
-		this.iconRef = IconReference.getIconRef(numPlayers);
+		this.iconRef = IconReference.getIconRef();
 		this.monstersInPlay = new ArrayList<Monster>();
 		this.players = new ArrayList<Player>(numPlayers);
 		
-		this.currDoom = this.ancientOne.getAncientOne_().getDoomStart_();
+		this.currDoom = this.ancientOne.getDoomStart_();
 		this.currOmen = OmenTrack.Omen.GREEN;
 	}
 	

@@ -2,10 +2,8 @@ package main;
 
 import java.util.*;
 
-import gameObjects.Expansion;
-import gameObjects.GameBoard;
-import gameObjects.gameTokens.AncientOneID;
-import gameObjects.locationData.*;
+import gameObjects.*;
+import gameObjects.gameTokens.AncientOne;
 
 public class EldritchHorrorMain {
 
@@ -67,7 +65,7 @@ public class EldritchHorrorMain {
 			
 			Expansion exp = Expansion.values()[gameVersion - 1];
 			
-			GameBoard.initGame(exp, AncientOneID.AZATHOTH, numPlayers);
+			GameBoard.initGame(exp, AncientOne.AncientOneMap.get(1), numPlayers);
 		}		
 		else if (option == 2) {
 			System.out.println("Please specify a directory path to the save file");

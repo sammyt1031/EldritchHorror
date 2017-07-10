@@ -13,7 +13,7 @@ public class TestMythosInitDeck {
 	@Test
 	public void test() {
 		
-		AncientOne azathoth = AncientOneID.AZATHOTH.getAncientOne_();
+		AncientOne azathoth = AncientOne.AncientOneMap.get(1);
 		List<List<Integer>> mythosInit = azathoth.getMythosInit_();
 		
 		try {

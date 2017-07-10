@@ -7,9 +7,9 @@ import gameObjects.gameTokens.Cards.*;
 
 public final class CardStacks {
 
-	private static final List<Asset> assetDeck;
-	private static final List<Artifact> artifactDeck;
-	private static final List<Location> cluePile;
+	private static final List<Integer> assetDeck;
+	private static final List<Integer> artifactDeck;
+	private static final List<Integer> cluePile;
 	private static final List<Monster> monsterPile;
 	
 	public static final void initStacks() {
@@ -19,9 +19,9 @@ public final class CardStacks {
 	}
 	
 	static {
-		assetDeck = new ArrayList<Asset>();
-		artifactDeck = new ArrayList<Artifact>();
-		cluePile = new ArrayList<Location>();
+		assetDeck = new ArrayList<Integer>();
+		artifactDeck = new ArrayList<Integer>();
+		cluePile = new ArrayList<Integer>();
 		monsterPile = new ArrayList<Monster>();
 	}
 	

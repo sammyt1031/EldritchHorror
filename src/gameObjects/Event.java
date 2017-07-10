@@ -46,7 +46,7 @@ public enum Event {
 	public final void update() {
 		
 		for (int i = 0; i < listeners.size(); i++) {
-			listeners.get(i).update();
+//			listeners.get(i).update();
 		}
 		
 	}
