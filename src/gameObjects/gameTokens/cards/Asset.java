@@ -1,11 +1,11 @@
-package gameObjects.gameTokens.Cards;
+package gameObjects.gameTokens.cards;
 
 import java.sql.*;
 import java.util.*;
 
-import database.DatabaseHandler;
 import gameObjects.*;
-import gameObjects.gameTokens.Cards.Item.ItemFlags;
+import gameObjects.gameTokens.cards.Item.ItemFlags;
+import utilities.DatabaseHandler;
 
 public final class Asset extends Item {
 	

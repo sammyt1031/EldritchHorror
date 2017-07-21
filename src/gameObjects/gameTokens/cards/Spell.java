@@ -1,10 +1,10 @@
-package gameObjects.gameTokens.Cards;
+package gameObjects.gameTokens.cards;
 
 import java.sql.*;
 import java.util.*;
 
-import database.DatabaseHandler;
 import gameObjects.Expansion;
+import utilities.DatabaseHandler;
 
 public final class Spell extends Card {
 

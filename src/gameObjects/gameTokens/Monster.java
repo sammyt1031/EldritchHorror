@@ -1,91 +1,85 @@
 package gameObjects.gameTokens;
 
+import java.util.*;
 import gameObjects.*;
-import gameObjects.locationData.Location;
 
 public final class Monster extends GamePiece {
-
-	private final int horror_;
-	private final int willMod_;
-	private final int damage_;
-	private final int strMod_;
-	private final int maxHlth_;
 	
-	private int currHlth_;
-	private Location currLoc_;
+	private static final Map<String, Monster> MonsterMap = new HashMap<String, Monster>();
 	
-	Monster(String name, Expansion expansion, int horror, int willMod, int damage, int strMod, int maxHlth) {
-		super(name, expansion);
-		horror_= horror;
-		willMod_ = willMod;
-		damage_ = damage;
-		strMod_ = strMod;
-		maxHlth_ = maxHlth;
+	public static final Monster getMonster(final String key) {
+		return MonsterMap.get(key);
+	}
+	
+	public static final void initMonsters(final Expansion expansion) {
 		
-		currHlth_ = maxHlth;
+	}
+
+//	Synchronized static method should provide lock to all static variables of this class, including MonsterMap
+	public static final void UpdateCultist() {
+		
+		synchronized (Monster.class) {
+			// Here we actually update the values in the MonsterMap; do all SQL stuff outside this block, to reduce block time
+		}
+		
+	}
+	
+	private final int horror;
+	private final int willMod;
+	private final int damage;
+	private final int strMod;
+	private final int maxHealth;
+	
+	private Monster(final String name, 
+					final Expansion expansion, 
+					final int horror, 
+					final int willMod, 
+					final int damage, 
+					final int strMod, 
+					final int maxHealth) {
+		
+		super(name, expansion);
+		this.horror = horror;
+		this.willMod = willMod;
+		this.damage = damage;
+		this.strMod = strMod;
+		this.maxHealth = maxHealth;	
+		
 	}
 	
 	/**
-	 * @return the currHlth_
+	 * @return the horror
 	 */
-	public final int getCurrHlth_() {
-		return currHlth_;
+	public final int getHorror() {
+		return horror;
 	}
 
 	/**
-	 * @param currHlth_ the currHlth_ to set
+	 * @return the willMod
 	 */
-	public final void setCurrHlth_(int currHlth_) {
-		this.currHlth_ = currHlth_;
+	public final int getWillMod() {
+		return willMod;
 	}
 
 	/**
-	 * @return the currLoc_
+	 * @return the damage
 	 */
-	public final Location getCurrLoc_() {
-		return currLoc_;
+	public final int getDamage() {
+		return damage;
 	}
 
 	/**
-	 * @param currLoc_ the currLoc_ to set
+	 * @return the strMod
 	 */
-	public final void setCurrLoc_(Location currLoc_) {
-		this.currLoc_ = currLoc_;
+	public final int getStrMod() {
+		return strMod;
 	}
 
 	/**
-	 * @return the horror_
+	 * @return the maxHealth
 	 */
-	public final int getHorror_() {
-		return horror_;
-	}
-
-	/**
-	 * @return the willMod_
-	 */
-	public final int getWillMod_() {
-		return willMod_;
-	}
-
-	/**
-	 * @return the damage_
-	 */
-	public final int getDamage_() {
-		return damage_;
-	}
-
-	/**
-	 * @return the strMod_
-	 */
-	public final int getStrMod_() {
-		return strMod_;
-	}
-
-	/**
-	 * @return the maxHlth_
-	 */
-	public final int getMaxHlth_() {
-		return maxHlth_;
+	public final int getMaxHealth() {
+		return maxHealth;
 	}
 	
 }

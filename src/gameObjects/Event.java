@@ -1,8 +1,7 @@
 package gameObjects;
 
 import java.util.*;
-
-import listeners.Listener;
+import java.util.concurrent.Callable;
 
 public enum Event {
 	
@@ -29,17 +28,17 @@ public enum Event {
 	GAME_OVER_LOSE;
 	
 	
-	private final List<Listener> listeners;
+	private final List<Callable> listeners;
 	
 	private Event() {
-		this.listeners = new ArrayList<Listener>();
+		this.listeners = new ArrayList<Callable>();
 	}
 	
-	public final void addListener(Listener listener) {
+	public final void addListener(Callable listener) {
 		this.listeners.add(listener);
 	}
 	
-	public final void removeListener(Listener listener) {
+	public final void removeListener(Callable listener) {
 		this.listeners.remove(listener);
 	}
 	

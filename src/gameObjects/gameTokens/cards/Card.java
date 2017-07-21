@@ -1,4 +1,4 @@
-package gameObjects.gameTokens.Cards;
+package gameObjects.gameTokens.cards;
 
 import gameObjects.Expansion;
 import gameObjects.GamePiece;

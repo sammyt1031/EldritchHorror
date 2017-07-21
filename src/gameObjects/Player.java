@@ -3,20 +3,18 @@ package gameObjects;
 import java.sql.*;
 import java.util.*;
 
-import database.DatabaseHandler;
 import gameObjects.gameTokens.*;
+import utilities.*;
 
 public final class Player {
 	
-	public static final int MAX_TICKETS_PER_PLAYER = 2;
-	public static final int MAX_NUM_ACTIONS = 2;
-		
 	private int heroID;
 	
 	private final List<Integer> spellList = new ArrayList<Integer>();
 	private final List<Integer> assetList = new ArrayList<Integer>();
 	private final List<Integer> artifactList = new ArrayList<Integer>();
 	private final List<Integer> conditionList = new ArrayList<Integer>();
+	private final List<TicketType> ticketsList = new ArrayList<TicketType>(Constants.MAX_TICKETS_PER_PLAYER);
 	
 	private int currHealth;
 	private int currSanity;
@@ -28,7 +26,8 @@ public final class Player {
 	
 	private int currLocID;
 	private int numClues = 0;	
-	private int actionsLeft = MAX_NUM_ACTIONS;
+	private int actionsLeft = Constants.MAX_NUM_ACTIONS;
+	private boolean isLeadInv = false;
 
 	public Player(int heroID) {
 		this.heroID = heroID;

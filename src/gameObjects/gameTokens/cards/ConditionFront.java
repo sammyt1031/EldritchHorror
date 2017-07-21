@@ -1,8 +1,8 @@
-package gameObjects.gameTokens.Cards;
+package gameObjects.gameTokens.cards;
 
 import java.util.EnumSet;
 
-import gameObjects.gameTokens.Cards.Condition.ConditionFlags;
+import gameObjects.gameTokens.cards.Condition.ConditionFlags;
 
 final class ConditionFront {
 

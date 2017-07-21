@@ -3,25 +3,21 @@ package gameObjects;
 public class OmenTrack {
 	
 	public enum Omen {
-		GREEN, BLUE, RED;
+		GREEN, BLUE1, RED, BLUE2;
 	}
-	
-	private static Omen prevOmen = null;
-	
+		
 	public static final Omen rotateClockwise(Omen currOmen) {
 				
 		if (currOmen == Omen.GREEN) {
-			prevOmen = Omen.GREEN;
-			return Omen.BLUE;
+			return Omen.BLUE1;
 		}
-		else if (currOmen == Omen.BLUE && prevOmen == Omen.GREEN) {
+		else if (currOmen == Omen.BLUE1) {
 			return Omen.RED;
 		}
 		else if (currOmen == Omen.RED) {
-			prevOmen = Omen.RED;
-			return Omen.BLUE;
+			return Omen.BLUE2;
 		}
-		else if (currOmen == Omen.BLUE && prevOmen == Omen.RED) {
+		else if (currOmen == Omen.BLUE2) {
 			return Omen.GREEN;
 		}
 		else {
@@ -34,17 +30,15 @@ public class OmenTrack {
 	public static final Omen rotateCounterClockwise(Omen currOmen) {
 				
 		if (currOmen == Omen.GREEN) {
-			prevOmen = Omen.RED;
-			return Omen.BLUE;
+			return Omen.BLUE2;
 		}
-		else if (currOmen == Omen.BLUE && prevOmen == Omen.RED) {
+		else if (currOmen == Omen.BLUE2) {
 			return Omen.RED;
 		}
 		else if (currOmen == Omen.RED) {
-			prevOmen = Omen.GREEN;
-			return Omen.BLUE;
+			return Omen.BLUE1;
 		}
-		else if (currOmen == Omen.BLUE && prevOmen == Omen.GREEN) {
+		else if (currOmen == Omen.BLUE1) {
 			return Omen.GREEN;
 		}
 		else {

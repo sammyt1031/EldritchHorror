@@ -3,8 +3,8 @@ package gameObjects.gameTokens;
 import java.sql.*;
 import java.util.*;
 
-import database.DatabaseHandler;
 import gameObjects.*;
+import utilities.DatabaseHandler;
 
 public final class Hero extends GamePiece {
 	

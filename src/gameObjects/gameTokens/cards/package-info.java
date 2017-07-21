@@ -5,4 +5,4 @@
  * @author Sam
  *
  */
-package gameObjects.gameTokens.Cards;
+package gameObjects.gameTokens.cards;

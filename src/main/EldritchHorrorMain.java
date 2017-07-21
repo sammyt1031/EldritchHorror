@@ -65,7 +65,7 @@ public class EldritchHorrorMain {
 			
 			Expansion exp = Expansion.values()[gameVersion - 1];
 			
-			GameBoard.initGame(exp, AncientOne.AncientOneMap.get(1), numPlayers);
+			GameBoard.init(exp, AncientOne.AncientOneMap.get(1), numPlayers);
 		}		
 		else if (option == 2) {
 			System.out.println("Please specify a directory path to the save file");

@@ -7,7 +7,7 @@ public abstract class GamePiece {
 	private final String name;
 	private final Expansion expansion;
 	
-	protected GamePiece(String name, Expansion expansion) {
+	protected GamePiece(final String name, final Expansion expansion) {
 		this.name = name;
 		this.expansion = expansion;
 	}

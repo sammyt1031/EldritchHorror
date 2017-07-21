@@ -16,13 +16,13 @@ public final class Dice {
 		List<Integer> result = new ArrayList<Integer>(Collections.nCopies(MAX, 0));
 		for (int i = 0; i < numDice; i++) {
 			
-			int dieRoll = Rand.nextInt(MAX);
+			int dieRollIndx = Rand.nextInt(MAX);
 			
-			int val = result.get(dieRoll);
-			result.set(dieRoll, val + 1);
+			int val = result.get(dieRollIndx);
+			result.set(dieRollIndx, val + 1);
 		}
 		
-		return result;
+		return Collections.unmodifiableList(result);
 		
 	}
 	

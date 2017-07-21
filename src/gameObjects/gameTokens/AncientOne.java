@@ -1,11 +1,10 @@
 package gameObjects.gameTokens;
 
 import gameObjects.*;
+import utilities.DatabaseHandler;
 
 import java.sql.*;
 import java.util.*;
-
-import database.DatabaseHandler;
 
 public final class AncientOne extends GamePiece {
 	

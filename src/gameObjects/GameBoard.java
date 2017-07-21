@@ -3,16 +3,13 @@ package gameObjects;
 import java.util.*;
 
 import gameObjects.gameTokens.*;
-import gameObjects.gameTokens.Cards.*;
-import gameObjects.locationData.*;
+import utilities.Constants;
 
 public final class GameBoard {
 	
-	public static final int MAX_ASSET_RESERVE_SIZE = 4;
-	
 	private static GameBoard Game = null;
 	
-	public static void initGame(Expansion expansion, AncientOne ancientOne, int numPlayers) {
+	public static void init(Expansion expansion, AncientOne ancientOne, int numPlayers) {
 		if (Game == null) {
 			Game = new GameBoard(expansion, ancientOne, numPlayers);
 		}
@@ -22,28 +19,25 @@ public final class GameBoard {
 	}
 	
 	private final Expansion expansion;
-	private final IconReference iconRef;
 	private final AncientOne ancientOne;
 	private final List<Player> players;
 	
-	private final List<Monster> monstersInPlay;
-	private final List<Integer> reserveAssetIDs = new ArrayList<Integer>(MAX_ASSET_RESERVE_SIZE);
-	private final List<Integer> assetDiscardPile = new ArrayList<Integer>();
-	private final List<Integer> artifactDiscardPile = new ArrayList<Integer>();
+	private final List<MonsterInPlay> monstersInPlay = new ArrayList<MonsterInPlay>();
+	private final List<Integer> reserveAssetIDs = new ArrayList<Integer>(Constants.MAX_ASSET_RESERVE_SIZE);
+	private final List<Integer> assetDiscardPileIDs = new ArrayList<Integer>();
+	private final List<Integer> artifactDiscardPileIDs = new ArrayList<Integer>();
 	private final List<Integer> clueLocIDs = new ArrayList<Integer>();
 	private final List<Integer> rumorLocIDs = new ArrayList<Integer>();
+	private final List<Integer> gateLocIDs = new ArrayList<Integer>();
 	
 	private int currDoom;
-	private OmenTrack.Omen currOmen;
 	private int activeExpLocID;
-	private Player leadInv;
+	private OmenTrack.Omen currOmen;
 		
 //	New game initialization
 	private GameBoard(Expansion expansion, AncientOne ancientOne, int numPlayers) {
 		this.expansion = expansion;
 		this.ancientOne = ancientOne;
-		this.iconRef = IconReference.getIconRef();
-		this.monstersInPlay = new ArrayList<Monster>();
 		this.players = new ArrayList<Player>(numPlayers);
 		
 		this.currDoom = this.ancientOne.getDoomStart_();
